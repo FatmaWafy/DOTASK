@@ -3,7 +3,9 @@ import data from "../data/data.json";
 
 const boardsSlice = createSlice({
   name: "boards",
+
   initialState: data.boards,
+
   reducers: {
     addBoard: (state, action) => {
       const isActive = state.length > 0 ? false : true;
@@ -16,16 +18,19 @@ const boardsSlice = createSlice({
       board.columns = payload.newColumns;
       state.push(board);
     },
+
     editBoard: (state, action) => {
       const payload = action.payload;
       const board = state.find((board) => board.isActive);
       board.name = payload.name;
       board.columns = payload.newColumns;
     },
+
     deleteBoard: (state) => {
       const board = state.find((board) => board.isActive);
       state.splice(state.indexOf(board), 1);
     },
+
     setBoardActive: (state, action) => {
       state.map((board, index) => {
         index === action.payload.index
@@ -34,6 +39,7 @@ const boardsSlice = createSlice({
         return board;
       });
     },
+
     addTask: (state, action) => {
       const { title, status, description, subtasks, newColIndex } =
         action.payload;
@@ -42,6 +48,7 @@ const boardsSlice = createSlice({
       const column = board.columns.find((col, index) => index === newColIndex);
       column.tasks.push(task);
     },
+
     editTask: (state, action) => {
       const {
         title,
@@ -64,6 +71,7 @@ const boardsSlice = createSlice({
       const newCol = board.columns.find((col, index) => index === newColIndex);
       newCol.tasks.push(task);
     },
+
     dragTask: (state, action) => {
       const { colIndex, prevColIndex, taskIndex } = action.payload;
       const board = state.find((board) => board.isActive);
@@ -71,6 +79,7 @@ const boardsSlice = createSlice({
       const task = prevCol.tasks.splice(taskIndex, 1)[0];
       board.columns.find((col, i) => i === colIndex).tasks.push(task);
     },
+
     setSubtaskCompleted: (state, action) => {
       const payload = action.payload;
       const board = state.find((board) => board.isActive);
@@ -79,6 +88,7 @@ const boardsSlice = createSlice({
       const subtask = task.subtasks.find((subtask, i) => i === payload.index);
       subtask.isCompleted = !subtask.isCompleted;
     },
+
     setTaskStatus: (state, action) => {
       const payload = action.payload;
       const board = state.find((board) => board.isActive);
@@ -91,6 +101,7 @@ const boardsSlice = createSlice({
       const newCol = columns.find((col, i) => i === payload.newColIndex);
       newCol.tasks.push(task);
     },
+
     deleteTask: (state, action) => {
       const payload = action.payload;
       const board = state.find((board) => board.isActive);
