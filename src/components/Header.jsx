@@ -6,20 +6,18 @@ import AddEditBoardModal from "../modals/AddEditBoardModal";
 import AddEditTaskModal from "../modals/AddEditTaskModal";
 import MobileDropDown from "./MobileDropDown";
 import CaretMenue from "./CaretMenu";
-import FilterMenu from "./FilterMenu";
 import HelpModal from "../modals/HelpModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSliders } from "@fortawesome/free-solid-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-import { faSliders } from "@fortawesome/free-solid-svg-icons";
 
 function Header({ boardModalOpen, setBoardModalOpen }) {
   const dispatch = useDispatch();
   const [isCaretOpen, setIsCaretOpen] = useState(false);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
   const [boardType, setBoardType] = useState("add");
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -66,25 +64,9 @@ function Header({ boardModalOpen, setBoardModalOpen }) {
 
         {/* right side */}
         <div className='flex items-center '>
-          {/* srearch btn */}
-          <button
-            onClick={() => {
-              // Add search functionality here
-            }}
-            className='xs:hidden  ml-[15px]'
-          >
+          {/* search btn */}
+          <button onClick={() => {}} className='xs:hidden  ml-[15px]'>
             <FontAwesomeIcon icon={faMagnifyingGlass} className='main-color' />
-          </button>
-
-          {/* filter btn */}
-          <button
-            title='Filter'
-            onClick={() => {
-              setIsFilterOpen((state) => !state); // تفتح أو تقفل قائمة الفلتر
-            }}
-            className='ml-[15px]'
-          >
-            <FontAwesomeIcon icon={faSliders} className='w-5 h-5 main-color' />
           </button>
 
           {/* add btn */}
@@ -104,9 +86,7 @@ function Header({ boardModalOpen, setBoardModalOpen }) {
           {/* profile btn */}
           <button
             className='relative xs:hidden flex items-center ml-[10px]'
-            onClick={() => {
-              // Add profile functionality here
-            }}
+            onClick={() => {}}
           >
             <FontAwesomeIcon icon={faUser} className='main-color  w-5 h-5' />
           </button>
@@ -134,8 +114,6 @@ function Header({ boardModalOpen, setBoardModalOpen }) {
           setOpenHelpModal={setOpenHelpModal}
         />
       )}
-
-      {isFilterOpen && <FilterMenu setIsFilterOpen={setIsFilterOpen} />}
 
       {isHelpModalOpen && <HelpModal setIsHelpModalOpen={setIsHelpModalOpen} />}
 

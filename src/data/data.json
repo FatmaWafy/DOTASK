@@ -53,7 +53,7 @@
               ]
             },
             {
-              "title": "QA and test all major user journeys",
+              "title": "QA and test all user journeys",
               "description": "Once we feel version one is ready, we need to rigorously test it both internally and externally to identify any major gaps.",
               "status": "Todo",
               "subtasks": [
