@@ -1,9 +1,9 @@
 /* eslint-disable */
+
 import React, { useState } from "react";
 import AddEditBoardModal from "../modals/AddEditBoardModal";
-
 function EmptyBoard({ type }) {
-  const [BoardModalOpen, setBoardModalOpen] = useState(false);
+  const [BoardModalOpen, setIsBoardModalOpen] = useState(false);
 
   return (
     <div className=' bg-white dark:bg-[#2b2c37] h-screen w-screen flex flex-col  items-center justify-center'>
@@ -14,7 +14,7 @@ function EmptyBoard({ type }) {
       </h3>
       <button
         onClick={() => {
-          setBoardModalOpen(true);
+          setIsBoardModalOpen(true);
         }}
         className='w-full items-center max-w-xs font-bold hover:opacity-70 dark:text-white dark:bg-gradient mt-8 relative  text-white bg-gradient py-2 rounded-full'
       >
@@ -22,10 +22,12 @@ function EmptyBoard({ type }) {
       </button>
 
       {BoardModalOpen && (
-        <AddEditBoardModal type='add' setBoardModalOpen={setBoardModalOpen} />
+        <AddEditBoardModal
+          type='add'
+          setIsBoardModalOpen={setIsBoardModalOpen}
+        />
       )}
     </div>
   );
 }
-
 export default EmptyBoard;

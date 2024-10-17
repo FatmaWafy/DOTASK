@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../assets/logo-mobile.png";
@@ -14,14 +15,14 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-
-function Header({ boardModalOpen, setBoardModalOpen }) {
+function Header() {
   const dispatch = useDispatch();
   const [isCaretOpen, setIsCaretOpen] = useState(false);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
   const [boardType, setBoardType] = useState("add");
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openAddEditTask, setOpenAddEditTask] = useState(false);
+  const [isBoardModalOpen, setIsBoardModalOpen] = useState(false);
 
   const boards = useSelector((state) => state.boards);
   const board = boards.find((board) => board.isActive);
@@ -30,10 +31,13 @@ function Header({ boardModalOpen, setBoardModalOpen }) {
     setIsHelpModalOpen(true);
     setIsCaretOpen(false);
   };
-
+  const setOpenEditModal = () => {
+    setIsBoardModalOpen(true);
+    setIsElipsisOpen(false);
+  };
   const onDropdownClick = () => {
     setOpenDropdown((state) => !state);
-    setBoardType("add");
+    setBoardType("add"); // نخلي الـ type "add" عند فتح القائمة
   };
 
   return (
@@ -120,15 +124,15 @@ function Header({ boardModalOpen, setBoardModalOpen }) {
       {openDropdown && (
         <MobileDropDown
           setOpenDropdown={setOpenDropdown}
-          setBoardModalOpen={setBoardModalOpen}
-          boardModalOpen={boardModalOpen}
+          setIsBoardModalOpen={setIsBoardModalOpen}
+          isBoardModalOpen={isBoardModalOpen}
         />
       )}
 
-      {boardModalOpen && (
+      {isBoardModalOpen && (
         <AddEditBoardModal
           type={boardType}
-          setBoardModalOpen={setBoardModalOpen}
+          setIsBoardModalOpen={setIsBoardModalOpen}
         />
       )}
 
@@ -142,5 +146,4 @@ function Header({ boardModalOpen, setBoardModalOpen }) {
     </div>
   );
 }
-
 export default Header;

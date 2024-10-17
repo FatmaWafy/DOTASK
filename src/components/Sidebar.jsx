@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "@headlessui/react";
@@ -20,12 +21,7 @@ import {
   faSun,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Sidebar({
-  isSideBarOpen,
-  setIsSideBarOpen,
-  boardModalOpen,
-  setBoardModalOpen,
-}) {
+function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
   const dispatch = useDispatch();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -44,13 +40,12 @@ function Sidebar({
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   const setOpenEditModal = () => {
-    setBoardModalOpen(true);
-    setIsElipsisOpen(false);
+    setBoardType("edit");
+    setIsBoardModalOpen(true);
   };
 
   const setOpenDeleteModal = () => {
     setIsDeleteModalOpen(true);
-    setIsElipsisOpen(false);
   };
 
   const onDeleteBtnClick = () => {
@@ -234,13 +229,9 @@ function Sidebar({
       </div>
 
       {isBoardModalOpen && (
-        <AddEditBoardModal type='add' setBoardModalOpen={setBoardModalOpen} />
-      )}
-
-      {boardModalOpen && (
         <AddEditBoardModal
           type={boardType}
-          setBoardModalOpen={setBoardModalOpen}
+          setIsBoardModalOpen={setIsBoardModalOpen}
         />
       )}
 

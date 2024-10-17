@@ -8,7 +8,7 @@ import EmptyBoard from "./EmptyBoard";
 import Sidebar from "./Sidebar";
 import FilterMenu from "./FilterMenu";
 
-function Center({ boardModalOpen, setBoardModalOpen }) {
+function Center({ boardModalOpen, setIsBoardModalOpen }) {
   const [windowSize, setWindowSize] = useState([
     window.innerWidth,
     window.innerHeight,
@@ -50,7 +50,7 @@ function Center({ boardModalOpen, setBoardModalOpen }) {
           isSideBarOpen={isSideBarOpen}
           setIsSideBarOpen={setIsSideBarOpen}
           boardModalOpen={boardModalOpen}
-          setBoardModalOpen={setBoardModalOpen}
+          setIsBoardModalOpen={setIsBoardModalOpen}
         />
       )}
       {columns.length > 0 ? (
@@ -77,7 +77,10 @@ function Center({ boardModalOpen, setBoardModalOpen }) {
         <EmptyBoard type='edit' />
       )}
       {boardModalOpen && (
-        <AddEditBoardModal type='edit' setBoardModalOpen={setBoardModalOpen} />
+        <AddEditBoardModal
+          type='edit'
+          setIsBoardModalOpen={setIsBoardModalOpen}
+        />
       )}
     </div>
   );

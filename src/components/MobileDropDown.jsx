@@ -15,16 +15,14 @@ import {
   faChevronDown,
   faChartSimple,
   faArrowRight,
-  faEyeSlash,
-  faEye,
   faMoon,
   faSun,
 } from "@fortawesome/free-solid-svg-icons";
 
 function MobileDropDown({
   setOpenDropdown,
-  setBoardModalOpen,
-  boardModalOpen,
+  isBoardModalOpen,
+  setIsBoardModalOpen,
 }) {
   const dispatch = useDispatch();
   const [colorTheme, setTheme] = useDarkMode();
@@ -36,7 +34,6 @@ function MobileDropDown({
   const board = boards.find((board) => board.isActive);
   const [isBoardsOpen, setIsBoardsOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [isBoardModalOpen, setIsBoardModalOpen] = useState(false);
   const [openAddEditTask, setOpenAddEditTask] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [boardType, setBoardType] = useState("add");
@@ -46,7 +43,9 @@ function MobileDropDown({
   };
 
   const setOpenEditModal = () => {
-    setBoardModalOpen(true);
+    setBoardType("edit");
+    setIsBoardModalOpen(true);
+    setOpenDropdown(false);
   };
 
   const setOpenDeleteModal = () => {
@@ -70,11 +69,13 @@ function MobileDropDown({
     >
       <div className='bg-white dark:bg-[#2b2c37] w-full rounded-xl p-4'>
         <div className='flex flex-col space-y-6'>
-          {/* الجزء الأول: الإعدادات */}
           <div>
             <div
               className='flex items-center rounded-r-full duration-500 ease-in-out cursor-pointer hover:bg-[#635fc71a] text-gradient'
-              onClick={() => setIsBoardModalOpen(true)}
+              onClick={() => {
+                setIsBoardModalOpen(true);
+                setOpenDropdown(false);
+              }}
             >
               <FontAwesomeIcon
                 icon={faCirclePlus}
@@ -167,7 +168,6 @@ function MobileDropDown({
             )}
           </div>
 
-          {/* الجزء الثاني: الـ Dark Mode Switch */}
           <div className=' bg-slate-100 dark:bg-[#20212c] flex justify-center items-center rounded-lg mt-6 p-2 w-full'>
             <FontAwesomeIcon icon={faSun} className='h-5 w-5 main-color' />
 
@@ -191,13 +191,9 @@ function MobileDropDown({
       </div>
 
       {isBoardModalOpen && (
-        <AddEditBoardModal type='add' setBoardModalOpen={setIsBoardModalOpen} />
-      )}
-
-      {boardModalOpen && (
         <AddEditBoardModal
           type={boardType}
-          setBoardModalOpen={setBoardModalOpen}
+          setIsBoardModalOpen={setIsBoardModalOpen}
         />
       )}
 

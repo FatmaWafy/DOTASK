@@ -55,13 +55,6 @@ function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
   };
 
   const onDeleteBtnClick = (e) => {
-    // if (e.target.textContent === "Delete") {
-    //   dispatch(boardsSlice.actions.deleteTask({ taskIndex, colIndex }));
-    //   setIsTaskModalOpen(false);
-    //   setIsDeleteModalOpen(false);
-    // } else {
-    //   setIsDeleteModalOpen(false);
-    // }
     dispatch(boardsSlice.actions.deleteTask({ taskIndex, colIndex }));
     setIsTaskModalOpen(false);
     setIsDeleteModalOpen(false);
