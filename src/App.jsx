@@ -1,15 +1,17 @@
 /* eslint-disable */
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import boardsSlice from "./redux/boardsSlice";
+
 import Header from "./components/Header";
 import Center from "./components/Center";
-import boardsSlice from "./redux/boardsSlice";
 import EmptyBoard from "./components/EmptyBoard";
 
 function App() {
   const [boardModalOpen, setBoardModalOpen] = useState(false);
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards);
+
   const activeBoard = boards.find((board) => board.isActive);
 
   if (!activeBoard && boards.length > 0)

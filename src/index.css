@@ -9,8 +9,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-y: auto; /* فقط يسمح بالسكروول العمودي عند الحاجة */
-  overflow-x: hidden; /* يمنع السكروول الأفقي */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 code {
@@ -45,12 +45,6 @@ code {
 .main-color {
   color: #3bb7ef;
 }
-
-/* .bg-gradient {
-  background: #56ccf2;
-  background: -webkit-linear-gradient(to left, #56ccf2, #2f80ed);
-  background: linear-gradient(to left, #56ccf2, #2f80ed);
-} */
 
 .bg-red {
   background: #ff0000;

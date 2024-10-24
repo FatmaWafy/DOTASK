@@ -25,11 +25,7 @@ function AddEditBoardModal({ setIsBoardModalOpen, type }) {
     if (!name.trim()) {
       return false;
     }
-    for (let i = 0; i < newColumns.length; i++) {
-      if (!newColumns[i].name.trim()) {
-        return false;
-      }
-    }
+
     setIsValid(true);
     return true;
   };
@@ -40,22 +36,10 @@ function AddEditBoardModal({ setIsBoardModalOpen, type }) {
         return { ...col, id: uuidv4() };
       })
     );
+
     setName(board.name);
     setIsFirstLoad(false);
   }
-
-  const onChange = (id, newValue) => {
-    setNewColumns((prevState) => {
-      const newState = [...prevState];
-      const column = newState.find((col) => col.id === id);
-      column.name = newValue;
-      return newState;
-    });
-  };
-
-  const onDelete = (id) => {
-    setNewColumns((prevState) => prevState.filter((el) => el.id !== id));
-  };
 
   const onSubmit = (type) => {
     setIsBoardModalOpen(false);
