@@ -5,7 +5,7 @@ import ElipsisMenu from "../components/ElipsisMenu";
 import boardsSlice from "../redux/boardsSlice";
 import Subtask from "../components/Subtask";
 import DeleteModal from "./DeleteModal";
-import useDarkMode from "../hooks/useDarkMode";
+import useDarkMode from "../Hooks/useDarkMode";
 import AddEditTaskModal from "./AddEditTaskModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";

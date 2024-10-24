@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import crossIcon from "../assets/icon-cross.svg";
 import boardsSlice from "../redux/boardsSlice";
-import useDarkMode from "../hooks/useDarkMode";
+import useDarkMode from "../Hooks/useDarkMode";
 
 function AddEditTaskModal({
   type,

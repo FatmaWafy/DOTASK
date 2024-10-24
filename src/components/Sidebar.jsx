@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "@headlessui/react";
-import useDarkMode from "../hooks/useDarkMode";
+import useDarkMode from "../Hooks/useDarkMode";
 import boardsSlice from "../redux/boardsSlice";
 import AddEditBoardModal from "../modals/AddEditBoardModal";
 import DeleteModal from "../modals/DeleteModal";
